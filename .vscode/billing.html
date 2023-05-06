@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Billing System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: azure ;
+    text-decoration-color: red;
+}
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.items {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 30px;
+}
+
+.item {
+	flex-basis: 25%;
+	padding: 10px;
+	text-align: center;
+}
+
+.item p {
+	margin: 0;
+	font-weight: bold;
+}
+
+.item input {
+	width: 100%;
+	margin-top: 10px;
+	padding: 5px;
+	border: none;
+	border-radius: 5px;
+	background-color: #f5f5f5;
+}
+
+.bill {
+	margin-top: 30px;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Billing System</h1>
+        <div class="items">
+            <h2>Items</h2>
+            <div class="item">
+                <p>Burger</p>
+                <input type="number" id="burger" value="0">
+            </div>
+            <div class="item">
+                <p>Pizza</p>
+                <input type="number" id="pizza" value="0">
+            </div>
+            <div class="item">
+                <p>Hotdog</p>
+                <input type="number" id="hotdog" value="0">
+            </div>
+            <div class="item">
+                <p>Fries</p>
+                <input type="number" id="fries" value="0">
+            </div>
+        </div>
+        <div class="bill">
+            <h2>Bill</h2>
+            <table>
+                <tr>
+                    <td>Burger</td>
+                    <td id="burger-price">80</td>
+                </tr>
+                <tr>
+                    <td>Pizza</td>
+                    <td id="pizza-price">299</td>
+                </tr>
+                <tr>
+                    <td>Hotdog</td>
+                    <td id="hotdog-price">50</td>
+                </tr>
+                <tr>
+                    <td>Fries</td>
+                    <td id="fries-price">30</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td id="total">0</td>
+                </tr>
+            </table>
+            <button onclick="calculate()">Calculate</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function calculate() {
+            // Get the values entered in the quantity input fields
+            var burgerQty = parseInt(document.getElementById("burger").value);
+            var pizzaQty = parseInt(document.getElementById("pizza").value);
+            var hotdogQty = parseInt(document.getElementById("hotdog").value);
+            var friesQty = parseInt(document.getElementById("fries").value);
+
+            // Calculate the total price for each item based on a predefined price
+            var burgerPrice = burgerQty * 50;
+            var pizzaPrice = pizzaQty * 170;
+            var hotdogPrice = hotdogQty * 70;
+            var friesPrice = friesQty * 50;
+
+            // Display the total price for each item and the total price of all items combined in the bill section
+            document.getElementById("burger-price").innerHTML = burgerPrice.toFixed(2);
+            document.getElementById("pizza-price").innerHTML = pizzaPrice.toFixed(2);
+            document.getElementById("hotdog-price").innerHTML = hotdogPrice.toFixed(2);
+            document.getElementById("fries-price").innerHTML = friesPrice.toFixed(2);
+            document.getElementById("total").innerHTML = (burgerPrice + pizzaPrice + hotdogPrice + friesPrice).toFixed(2);
+        }
+
+        function reset() {
+                document.getElementById("burger").value = 0;
+                document.getElementById("pizza").value = 0;
+                document.getElementById("hotdog").value = 0;
+             document.getElementById("fries").value = 0;
+    document.getElementById("burger-price").innerHTML = "0.00";
+    document.getElementById("pizza-price").innerHTML = "0.00";
+    document.getElementById("hotdog-price").innerHTML = "0.00";
+    document.getElementById("fries-price").innerHTML = "0.00";
+    document.getElementById("total").innerHTML = "0.00";
+        }
+        </script>
+        </body>
+        </html> 
